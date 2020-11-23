@@ -17,4 +17,9 @@ class TddAdditionApplicationTests {
 	    Assert.assertEquals(3, TddAdditionApplication.add("3"));
 	}
 
+	@Test
+	public final void whenTwoNumbersAreAddedThenSumIsTheAddition() {
+	    Assert.assertEquals(5+10, TddAdditionApplication.add("5,10"));
+	}
+
 }

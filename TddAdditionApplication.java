@@ -9,27 +9,35 @@ public class TddAdditionApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TddAdditionApplication.class, args);
 	}
-
+	
+	/**
+	 * Method to add 2 numbers separated by comma
+	 * @param numbers
+	 * @return
+	 */
 	public static int add(final String numbers) {
-	    String delimiter = ",|n";
-	    String numbersWithoutDelimiter = numbers;
-	    if (numbers.startsWith("//")) {
-	        int delimiterIndex = numbers.indexOf("//") + 2;
-	        delimiter = numbers.substring(delimiterIndex, delimiterIndex + 1);
-	        numbersWithoutDelimiter = numbers.substring(numbers.indexOf("n") + 1);
-	    }
-	    return add(numbersWithoutDelimiter, delimiter);
-	}
-
-	private static int add(final String numbers, final String delimiter) {
-	    int returnValue = 0;
-	    String[] numbersArray = numbers.split(delimiter);
-	    for (String number : numbersArray) {
-	        if (!number.trim().isEmpty()) {
-	            returnValue += Integer.parseInt(number.trim());
-	        }
-	    }
-	    return returnValue;
+		String[] numbersArray = numbers.split(",|n");
+		int sumOfNumbers = 0;
+		int num = 0;
+		if (numbersArray.length > 2) {
+			throw new RuntimeException("Maximum 2 numbers are allowed in this list");
+		} else {
+			for (String number : numbersArray) {
+				try {
+					if (null != number && !number.trim().isEmpty()) {
+						if (num < 0) {
+							throw new RuntimeException("Number Can't be negative");
+						}
+						num = Integer.parseInt(number);
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("Trying to parse " + number + " which is not number.");
+					e.printStackTrace();
+				}
+				sumOfNumbers += num;
+			}
+		}
+		return sumOfNumbers;
 	}
 
 }

@@ -16,7 +16,9 @@ public class TddAdditionApplication {
 	 * @return
 	 */
 	public static int add(final String numbers) {
-		String[] numbersArray = numbers.split(",|n");
+		
+		String delimeter = numbers.substring(numbers.firstIndexOf("["), numbers.lastIndexOf("]")-1);
+		String[] numbersArray = numbers.substring(numbers.lastIndexOf("]")-1).split(delimeter);
 		int sumOfNumbers = 0;
 		int num = 0;
 		if (numbersArray.length > 2) {

@@ -48,5 +48,10 @@ class TddAdditionApplicationTests {
 	public final void whenTryingToAddWithThousandAndGreaterNumber() {
 		Assert.assertEquals(1+1000+15, TddAdditionApplication.add("1,1000,1005,15,1234"));
 	}
+	
+	@Test
+	public final void whenDelimeterCanBeOfnyLength() {
+		Assert.assertEquals(2+5+7, TddAdditionApplication.add("//[***]\\n2***5***7"));
+	}
 
 }

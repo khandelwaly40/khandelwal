@@ -28,7 +28,10 @@ public class TddAdditionApplication {
 						if (num < 0) {
 							throw new RuntimeException("Number Can't be negative");
 						}
-						num = Integer.parseInt(number);
+						
+						if (num <= 1000) {
+							num = Integer.parseInt(number);
+						}
 					}
 				} catch (NumberFormatException e) {
 					System.out.println("Trying to parse " + number + " which is not number.");

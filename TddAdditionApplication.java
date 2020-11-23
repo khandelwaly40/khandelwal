@@ -16,7 +16,7 @@ public class TddAdditionApplication {
 	 * @return
 	 */
 	public static int add(final String numbers) {
-		String[] numbersArray = numbers.split(",");
+		String[] numbersArray = numbers.split(",|n");
 		int sumOfNumbers = 0;
 		int num = 0;
 		if (numbersArray.length > 2) {
@@ -24,7 +24,9 @@ public class TddAdditionApplication {
 		} else {
 			for (String number : numbersArray) {
 				try {
-					num = Integer.parseInt(number);
+					if (null != number && !number.trim().isEmpty()) {
+						num = Integer.parseInt(number);
+					}
 				} catch (NumberFormatException e) {
 					System.out.println("Trying to parse " + number + " which is not number.");
 					e.printStackTrace();

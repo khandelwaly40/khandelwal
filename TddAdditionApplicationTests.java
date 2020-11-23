@@ -21,5 +21,10 @@ class TddAdditionApplicationTests {
 	public final void whenTwoNumbersAreAddedThenSumIsTheAddition() {
 	    Assert.assertEquals(5+10, TddAdditionApplication.add("5,10"));
 	}
+	
+	@Test
+	public final void whenAddedDelimeterAsNewLine() {
+	    Assert.assertEquals(3+6+15, StringCalculator.add("3,6n15"));
+	}
 
 }
